@@ -1,0 +1,21 @@
+[
+    {
+        "totalPrice": 111,
+        "depositPaid": true,
+        "bookingDates": {
+            "checkIn": "2018-01-01",
+            "checkOut": "2019-01-01"
+        },
+        "additionalNeeds": "Breakfast"
+    },
+
+    {
+        "totalPrice": 222,
+        "depositPaid": false,
+        "bookingDates": {
+            "checkIn": "2019-01-01",
+            "checkOut": "2020-01-01"
+        },
+        "additionalNeeds": "Lunch"
+    }
+]
