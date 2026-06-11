@@ -1,21 +1,86 @@
 [
     {
-        "totalPrice": 111,
-        "depositPaid": true,
-        "bookingDates": {
-            "checkIn": "2018-01-01",
-            "checkOut": "2019-01-01"
+        "authData": {
+            "username": "admin",
+            "password": "password123"
         },
-        "additionalNeeds": "Breakfast"
-    },
 
-    {
-        "totalPrice": 222,
-        "depositPaid": false,
-        "bookingDates": {
-            "checkIn": "2019-01-01",
-            "checkOut": "2020-01-01"
+        "createBooking": [
+            {
+                "firstname": "Jim",
+                "lastname": "Brown",
+                "totalprice": 111,
+                "depositpaid": true,
+                "bookingdates": {
+                    "checkin": "2018-01-01",
+                    "checkout": "2019-01-01"
+                },
+                "additionalneeds": "Breakfast"
+            },
+
+            {
+                "firstname": "Jim",
+                "lastname": "Black",
+                "totalprice": 222,
+                "depositpaid": false,
+                "bookingdates": {
+                    "checkin": "2019-01-01",
+                    "checkout": "2020-01-01"
+                },
+                "additionalneeds": "Lunch"
+            },
+
+            {
+                "firstname": "Walter",
+                "lastname": "White",
+                "totalprice": 333,
+                "depositpaid": false,
+                "bookingdates": {
+                    "checkin": "2019-01-01",
+                    "checkout": "2020-01-01"
+                },
+                "additionalneeds": "Lunch"
+            },
+
+            {
+                "firstname": "Amogh",
+                "lastname": "White",
+                "totalprice": 444,
+                "depositpaid": true,
+                "bookingdates": {
+                    "checkin": "2019-01-01",
+                    "checkout": "2020-01-01"
+                },
+                "additionalneeds": "Dinner"
+            },
+
+            {
+                "firstname": "Jessie",
+                "lastname": "Pinkman",
+                "totalprice": 666,
+                "depositpaid": true,
+                "bookingdates": {
+                    "checkin": "2019-01-01",
+                    "checkout": "2020-01-01"
+                },
+                "additionalneeds": "Brunch"
+            }
+        ],
+
+        "updateBooking": {
+            "firstname": "Walter",
+            "lastname": "Black",
+            "totalprice": 111,
+            "depositpaid": true,
+            "bookingdates": {
+                "checkin": "2018-01-01",
+                "checkout": "2019-01-01"
+            },
+            "additionalneeds": "Breakfast"
         },
-        "additionalNeeds": "Lunch"
+
+        "partialUpdateBooking": {
+            "firstname": "Walter"
+        }
     }
 ]
