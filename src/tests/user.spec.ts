@@ -2,6 +2,8 @@ import { test , expect } from '@playwright/test';
 import { BookingAPI } from '../../src/api/booking_api';
 import * as dotenv from 'dotenv';
 import data from '../data/user_data.json';
+import { validateSchema } from '../../src/utils/utilities';
+import { userCreatedSchema, authResponse } from '../schemas/user_schema';
 
 dotenv.config();
 
@@ -12,16 +14,22 @@ test.describe('Booking API Tests', () => {
 
     test.beforeEach(async ({ request }) => {
         bookingAPI = new BookingAPI(request, process.env.BASE_URL || '');
-        token = await bookingAPI.createAuth(data[0].authData)
-        .then(res => res.json()).then(res => res.token);
+        const response = await bookingAPI.createAuth(data[0].authData)
+        const responseBody = await bookingAPI.getResponseBody(response);
+        const isValidSchema = validateSchema(responseBody, authResponse);
+        if(isValidSchema) {
+            token = responseBody.token;
+        }
     });
 
     test('Create a new booking', async () => {
         const response = await bookingAPI.createBooking(data[0].createBooking[0]);
         expect(response.status()).toBe(200);
         const responseBody = await bookingAPI.getResponseBody(response);
+        const isValidSchema = validateSchema(responseBody, userCreatedSchema);
         expect(responseBody).toHaveProperty('bookingid');
         expect(responseBody.booking).toMatchObject(data[0].createBooking[0]);
+        expect(isValidSchema).toBe(true);
     });
 
     test('Get a booking by ID', async () => {
