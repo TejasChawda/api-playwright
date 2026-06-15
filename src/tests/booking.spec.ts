@@ -1,8 +1,8 @@
 import { test , expect } from '@playwright/test';
-import { BookingAPI } from '../../src/api/booking_api';
+import { BookingAPI } from '../api/booking_api';
 import * as dotenv from 'dotenv';
 import data from '../data/user_data.json';
-import { validateSchema } from '../../src/utils/utilities';
+import { validateSchema } from '../utils/utilities';
 import { userCreatedSchema, authResponse } from '../schemas/user_schema';
 
 dotenv.config();
@@ -13,7 +13,7 @@ test.describe('Booking API Tests', () => {
 
 
     test.beforeEach(async ({ request }) => {
-        bookingAPI = new BookingAPI(request, process.env.BASE_URL || '');
+        bookingAPI = new BookingAPI(request, process.env.BOOKING_BASE_URL || '');
         const response = await bookingAPI.createAuth(data[0].authData)
         const responseBody = await bookingAPI.getResponseBody(response);
         const isValidSchema = validateSchema(responseBody, authResponse);

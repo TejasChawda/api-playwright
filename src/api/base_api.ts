@@ -40,7 +40,6 @@ export class BaseAPI {
     }
 
     async post(endpoint: string, body: object, headers = {}) {
-        console.log(`POST Request to: ${this.baseURL}${endpoint} with body: ${JSON.stringify(body)} and headers: ${JSON.stringify(headers)}`);
         return await this.request.post(`${this.baseURL}${endpoint}`, { 
             data: body, 
             headers: headers 
