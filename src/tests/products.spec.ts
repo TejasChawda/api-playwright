@@ -46,8 +46,8 @@ test.describe('Products API Tests', () => {
     //Pagination test
 
     test('Get products with pagination', async () => {
-        const skip = 10;
-        const limit = 5;
+        const skip = Number(process.env.SKIP ?? 0);
+        const limit = Number(process.env.LIMIT ?? 10);
         const response = await productsAPI.getProductsBySkippingAndLimiting(skip, limit);
         expect(response.status()).toBe(200);
         const responseBody = await productsAPI.getResponseBody(response);

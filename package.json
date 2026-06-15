@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:all": "playwright test", 
+    "test:booking": "playwright test tests/booking.spec.ts",
+    "test:products": "playwright test tests/products.spec.ts",
+    "test:pagination": "playwright test tests/products.spec.ts -g \"Get products with pagination\""
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
