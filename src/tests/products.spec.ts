@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-import { ProductsAPI } from '../api/products_api';
+import { ProductsAPI } from '../api/Rest_api/products_api';
 import { test , expect } from '@playwright/test';
 
 

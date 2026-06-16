@@ -1,5 +1,5 @@
 import { test , expect } from '@playwright/test';
-import { BookingAPI } from '../api/booking_api';
+import { BookingAPI } from '../api/Rest_api/booking_api';
 import * as dotenv from 'dotenv';
 import data from '../data/user_data.json';
 import { validateSchema } from '../utils/utilities';
