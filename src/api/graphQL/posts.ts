@@ -1,4 +1,4 @@
-import { BaseAPI } from "../Rest_api/base_api";
+import { BaseAPI } from "../base_api";
 
 export class PostsQL extends BaseAPI {
     async executeGQL(query: any, variables?: any, fragments?: any) {

@@ -1,4 +1,4 @@
-import { BaseAPI } from "./base_api";
+import { BaseAPI } from "../base_api";
 
 export class BookingAPI extends BaseAPI {
 
