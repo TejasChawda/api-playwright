@@ -1,31 +1,22 @@
 import { WebSocket } from "ws";
 import { test , expect } from '@playwright/test';
+import { connectToServer, sendMessageFromClient, receiveMessage } from '../api/websockets/websocket_client'
+import * as dotenv from 'dotenv';
 
+dotenv.config();
 
 test.describe("Testing Websocket", () => {
 
     let socket: any;
 
     test.beforeAll(() => {
-        socket = new WebSocket("ws://localhost:8080");
-        
+        socket = new WebSocket(process.env.WEBSOCKET_URL || '');
     });
 
     test("Message test", async () => {
-
-        const response = await new Promise<string>((resolve, reject) => {
-
-            socket.on("open", () => {
-                console.log("Connection established");
-                socket.send("hi, this is Tejas");
-            });
-
-            socket.on("message", (message: WebSocket.RawData) => {
-                resolve(message.toString());
-            });
-
-            socket.on("error", reject);
-        });
+        await connectToServer(socket);
+        sendMessageFromClient(socket, "hi, this is Tejas");
+        const response = await receiveMessage(socket);
 
         expect(response).toBe("hi, this is Tejas");
     });
