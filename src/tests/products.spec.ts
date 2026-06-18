@@ -1,15 +1,15 @@
 import * as dotenv from 'dotenv';
-import { ProductsAPI } from '../api/Rest_api/products_api';
 import { test , expect } from '@playwright/test';
+import { ApiFactory } from '../factory/ObjectProvider';
 
 
 dotenv.config();
 
 test.describe('Products API Tests', () => {
-    let productsAPI: ProductsAPI;
+    let productsAPI: any;
 
     test.beforeEach(async ({ request }) => {
-        productsAPI = new ProductsAPI(request, process.env.PRODUCTS_BASE_URL || '');
+        productsAPI = await ApiFactory.create('products', request, process.env.PRODUCTS_BASE_URL || '');
     });
 
     test('Get all products', async () => {

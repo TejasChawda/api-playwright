@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test';
-import { PostsQL } from '../api/graphQL/posts';
+import { ApiFactory } from '../factory/ObjectProvider';
 import { queries, mutations } from '../utils/query';
 import { variables } from '../utils/variables';
 import * as dotenv from 'dotenv';
@@ -7,10 +7,10 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 test.describe('GraphQL Posts API Tests', () => {
-    let postsQL: PostsQL;
+    let postsQL: any;
 
     test.beforeEach(async ({ request }) => {
-        postsQL = new PostsQL(request, process.env.GRAPHQL_BASE_URL || '');
+        postsQL = await ApiFactory.create('posts', request, process.env.GRAPHQL_BASE_URL || '');
     });
 
     test('Get a post by ID', async () => {

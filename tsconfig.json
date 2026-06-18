@@ -8,5 +8,4 @@
     "types": ["node"]
   },
   "include": ["playwright.config.ts", "src/tests"],
-  "references": [{ "path": "./tsconfig.app.json" }]
 }
